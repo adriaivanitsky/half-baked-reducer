@@ -18,7 +18,7 @@ export default function Counter() {
         throw Error('Error')
     }
   }
-  const [state, dispatch] = useReducer(countReducer, initialCount)
+  const [count, dispatch] = useReducer(countReducer, initialCount)
 
   useEffect(() => {
     if (count === 0) {
@@ -35,15 +35,15 @@ export default function Counter() {
   }, [count])
 
   const increment = () => {
-    setCount((prevState) => prevState + 1)
+    dispatch({ type: 'increment' })
   }
 
   const decrement = () => {
-    setCount((prevState) => prevState - 1)
+    dispatch({ type: 'decrement' })
   }
 
   const reset = () => {
-    setCount(0)
+    dispatch({ type: 'reset' })
   }
 
   return (
